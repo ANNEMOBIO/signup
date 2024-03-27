@@ -1,22 +1,49 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  // Définir les états pour les champs du formulaire
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  // Gérer la soumission du formulaire
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Ajoutez votre logique de connexion ici
+    console.log("Soumission du formulaire :", { email, password });
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* Supprimer l'image du logo */}
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+         connexion
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {/* Créer le formulaire de connexion */}
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Email :</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label>Mot de passe :</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <button type="submit">Se connecter</button>
+          </div>
+        </form>
       </header>
     </div>
   );
